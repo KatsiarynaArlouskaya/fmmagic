@@ -1,6 +1,7 @@
 package com.epam.appium_magic.screen.pages;
 
 import com.epam.appium_magic.harness.pageobject.PageObject;
+import com.epam.appium_magic.screen.block.MenuBlock;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import com.epam.qatools.mobileelements.annotations.AndroidFindBy;
@@ -33,5 +34,10 @@ public class LoginPage extends PageObject {
 
     public void clickLogin() {
         btnLogin.click();
+    }
+
+    private MenuBlock menu;
+    public void clickEvents(){
+
     }
 }

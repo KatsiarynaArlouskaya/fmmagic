@@ -35,6 +35,7 @@ public class LoginTests
         step.skipAlertClickNo();
         step.skipAlertClickNo();
         Assert.assertTrue(step.textPresent(username));
+        step.clickEvents();
 
     }
 

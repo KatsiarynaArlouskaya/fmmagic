@@ -4,6 +4,7 @@ import com.epam.appium_magic.harness.context.AppiumDriverProvider;
 import com.epam.appium_magic.harness.pageobject.Screens;
 import com.epam.appium_magic.screen.alerts.GenericAlert;
 
+import com.epam.appium_magic.screen.block.MenuBlock;
 import com.epam.appium_magic.screen.pages.LoginPage;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
@@ -19,6 +20,7 @@ public class LoginStepDefs
     LoginPage loginPage = new LoginPage(driver);
     GenericAlert alert = new GenericAlert(driver);
 
+
     public void login(String login, String pass)
     {
         loginPage.enterLoginPass(login, pass);
@@ -33,5 +35,9 @@ public class LoginStepDefs
     public boolean textPresent(String text) {
         By usernameLocator = By.xpath("//android.widget.TextView[@text='"+text+"']");
         return loginPage.isElementPresent(usernameLocator);
+    }
+
+    public void clickEvents() {
+        loginPage.clickEvents();
     }
 }
