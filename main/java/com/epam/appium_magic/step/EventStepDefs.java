@@ -12,7 +12,19 @@ import org.apache.log4j.Logger;
 public class EventStepDefs
 {
     private static final Logger LOGGER = Logger.getLogger(EventStepDefs.class);
+    private AppiumDriver driver = AppiumDriverProvider.driver();
+    private EventPage eventPage = new EventPage(driver);
 
 
+    public void clickEventTab() {
+        eventPage.clickEventTab();
+    }
 
+    public void clickFirstEvent() {
+        eventPage.clickFirstEvent();
+    }
+
+    public void changeToAttending() {
+        eventPage.changeToAttending();
+    }
 }

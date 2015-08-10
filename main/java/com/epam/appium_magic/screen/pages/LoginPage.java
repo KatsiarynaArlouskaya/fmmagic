@@ -40,4 +40,8 @@ public class LoginPage extends PageObject {
     public String getNameActiveTab() {
         return menu.getNameActiveTab();
     }
+
+    public void clickRadioTab() {
+        menu.clickRadioTab();
+    }
 }

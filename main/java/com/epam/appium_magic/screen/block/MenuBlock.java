@@ -10,12 +10,17 @@ import io.appium.java_client.MobileElement;
  */
 @AndroidBlock(@AndroidFindBy(id = "android:id/tabs"))
 public class MenuBlock extends BlockElement {
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").selected(true)")
-    private MobileElement activeTab;
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").text(\"Events\")")
+
+//    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").text(\"Events\")")
+    @AndroidFindBy(uiAutomator = "text(\"Events\")")
     private MobileElement tabEvents;
    @AndroidFindBy(name = "Search")
    private MobileElement tabSearch;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").selected(true)")
+    private MobileElement activeTab;
+ //   @AndroidFindBy(xpath = "//android.widget.TextView[@text='Radio']")
+ //   private MobileElement tabRadio;
+
 
 /*    @AndroidFindBy(using = )
     private MobileElement tabSearch;*/
@@ -26,6 +31,10 @@ public class MenuBlock extends BlockElement {
 
     public void clickSearchTab(){
         tabSearch.click();
+    }
+
+    public void clickRadioTab(){
+//        tabRadio.click();
     }
 
 

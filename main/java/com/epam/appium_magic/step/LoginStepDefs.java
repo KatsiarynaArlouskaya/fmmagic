@@ -40,4 +40,8 @@ public class LoginStepDefs
      public String getNameActiveTab() {
         return loginPage.getNameActiveTab();
     }
+
+    public void clickRadioTab() {
+        loginPage.clickRadioTab();
+    }
 }
