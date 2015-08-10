@@ -3,6 +3,7 @@ package com.epam.appium_magic;
 import com.epam.appium_magic.harness.context.AutomationModule;
 import com.epam.appium_magic.step.SettingStepDefs;
 import com.google.inject.Inject;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Parameters;
@@ -31,7 +32,9 @@ public class SettingsTests
     @Test
     public void changeSettings()
     {
-
+        step.goToSettings();
+        step.setScrobblePercentage(scrobblePercentage);
+        Assert.assertEquals(step.getScrobbleParcentage(), scrobblePercentage);
     }
 
 

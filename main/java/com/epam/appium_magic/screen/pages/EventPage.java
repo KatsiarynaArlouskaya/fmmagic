@@ -6,6 +6,9 @@ import com.epam.qatools.mobileelements.annotations.AndroidFindBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 /**
  * Created by Katsiaryna_Arlouskay on 8/10/2015.
@@ -26,7 +29,14 @@ public class EventPage extends PageObject {
     @AndroidFindBy(uiAutomator = "resourceId(\"fm.last.android:id/ok\")")
     private MobileElement btnOk;
 
-    By eventsListLocator = By.id("fm.last.android:id/events_list_view");
+    @AndroidFindBy(uiAutomator = "text(\"My Events\")")
+    private MobileElement btnMyEvents;
+
+    @AndroidFindBy(uiAutomator = "resourceId(\"fm.last.android:id/myevents_list_view\")")
+    private MobileElement listOfMyEvents;
+
+    By menuLocator = By.id("android:id/tabs");
+    By eventItemLocator = By.id("fm.last.android:id/list_header_title");
 
     public void clickEventTab() {
         menu.clickEventTab();
@@ -40,6 +50,16 @@ public class EventPage extends PageObject {
     public void changeToAttending() {
         radioBtnAttending.click();
         btnOk.click();
-        waitForElement(eventsListLocator);
+        waitForElement(menuLocator);
     }
+
+    public void clickMyEvents() {
+        btnMyEvents.click();
+    }
+
+    public int countOfListItem() {
+        List<WebElement> events = driver().findElements(eventItemLocator);
+        return events.size();
+    }
+
 }

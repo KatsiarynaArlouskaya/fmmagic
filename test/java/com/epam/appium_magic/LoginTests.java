@@ -37,6 +37,7 @@ public class LoginTests
         step.skipAlertClickNo();
         Assert.assertEquals(step.getNameActiveTab(), activeTab);
         Assert.assertTrue(step.textPresent(username));
+    //    step.clickRadioTab();
     }
 
     @AfterSuite

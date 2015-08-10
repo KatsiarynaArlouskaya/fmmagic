@@ -5,6 +5,7 @@ import com.epam.appium_magic.harness.context.AutomationModule;
 import com.epam.appium_magic.step.EventStepDefs;
 import com.google.inject.Inject;
 import io.appium.java_client.AppiumDriver;
+import org.junit.Assert;
 import org.testng.annotations.*;
 
 /**
@@ -27,8 +28,14 @@ public class EventTests
     @Test
     public void addEvent()
     {
-     //   AppiumDriver driver = AppiumDriverProvider.driver();
-     //   System.out.print("driver set");
+        step.clickEventTab();
+        step.clickFirstEvent();
+        step.changeToAttending();
+        step.back();
+        step.clickEventTab();
+        step.clickMyEvents();
+        Assert.assertEquals(step.countOfEvents(), 1);
+
     }
 
 

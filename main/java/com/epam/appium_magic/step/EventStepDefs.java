@@ -27,4 +27,16 @@ public class EventStepDefs
     public void changeToAttending() {
         eventPage.changeToAttending();
     }
+
+    public void back() {
+        driver.navigate().back();
+    }
+
+    public void clickMyEvents() {
+        eventPage.clickMyEvents();
+    }
+
+    public int countOfEvents() {
+        return eventPage.countOfListItem();
+    }
 }

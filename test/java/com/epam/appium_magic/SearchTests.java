@@ -34,6 +34,7 @@ public class SearchTests
         step.clickSearchTab();
         step.toDoSearch(searchRequest);
         Assert.assertTrue(step.presentInList(searchResult));
+        step.clickOnSearchResult(searchResult);
 
     }
 

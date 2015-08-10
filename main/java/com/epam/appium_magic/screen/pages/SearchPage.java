@@ -29,6 +29,9 @@ public class SearchPage extends PageObject {
     @AndroidFindBy(id = "fm.last.android:id/search")
     private MobileElement searchButton;
 
+    @AndroidFindBy(id = "android:id/list")
+    private MobileElement listOfResults;
+
 
     By searchResultsPresentLocator = By.id("fm.last.android:id/row_icon");
     By webView = By.id("fm.last.android:id/webview");
@@ -48,12 +51,13 @@ public class SearchPage extends PageObject {
 
     public boolean presentInList(String searchResult) {
        By searchLocator = new MobileBy.ByAndroidUIAutomator("textContains(\""+searchResult+"\")");
-       return isElementPresent(searchLocator);
+       List<WebElement> elements = listOfResults.findElements(searchLocator);
+       return !elements.isEmpty() && elements.get(0).isDisplayed();
     }
 
     public void clickOnSearcResult(String searchResult) {
         By searchLocator = new MobileBy.ByAndroidUIAutomator("textContains(\""+searchResult+"\")");
-        driver().findElement(searchLocator).click();
+        listOfResults.findElement(searchLocator).click();
         waitForElement(webView);
     }
 }

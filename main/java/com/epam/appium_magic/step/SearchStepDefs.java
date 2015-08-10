@@ -28,4 +28,8 @@ public class SearchStepDefs
     public boolean presentInList(String searchResult) {
         return searchPage.presentInList(searchResult);
     }
+
+    public void clickOnSearchResult(String searchResult) {
+        searchPage.clickOnSearcResult(searchResult);
+    }
 }
