@@ -33,11 +33,11 @@ public class LoginStepDefs
     }
 
     public boolean textPresent(String text) {
-        By usernameLocator = By.xpath("//android.widget.TextView[@text='"+text+"']");
+        By usernameLocator = By.xpath(".//android.widget.TextView[@text='"+text+"']");
         return loginPage.isElementPresent(usernameLocator);
     }
 
-    public void clickEvents() {
-        loginPage.clickEvents();
+     public String getNameActiveTab() {
+        return loginPage.getNameActiveTab();
     }
 }

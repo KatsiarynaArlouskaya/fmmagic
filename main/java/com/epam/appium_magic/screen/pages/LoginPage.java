@@ -37,7 +37,7 @@ public class LoginPage extends PageObject {
     }
 
     private MenuBlock menu;
-    public void clickEvents(){
-
+    public String getNameActiveTab() {
+        return menu.getNameActiveTab();
     }
 }

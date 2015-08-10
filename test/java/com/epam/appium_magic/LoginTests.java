@@ -31,16 +31,16 @@ public class LoginTests
 
     @Test
     public void userLoginTest() {
+        String activeTab = "Profile";
         step.login(login, password);
         step.skipAlertClickNo();
         step.skipAlertClickNo();
+        Assert.assertEquals(step.getNameActiveTab(), activeTab);
         Assert.assertTrue(step.textPresent(username));
-        step.clickEvents();
-
     }
 
     @AfterSuite
     public void tearDown(){
-        AppiumDriverProvider.teardown();
+//      AppiumDriverProvider.teardown();
     }
 }

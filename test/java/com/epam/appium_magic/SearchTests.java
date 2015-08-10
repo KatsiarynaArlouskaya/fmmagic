@@ -3,6 +3,7 @@ package com.epam.appium_magic;
 import com.epam.appium_magic.harness.context.AutomationModule;
 import com.epam.appium_magic.step.SearchStepDefs;
 import com.google.inject.Inject;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Guice;
 import org.testng.annotations.Parameters;
@@ -28,6 +29,11 @@ public class SearchTests
     @Test
     public void searchTest()
     {
+        String searchRequest="System of a Down";
+        String searchResult="Forest";
+        step.clickSearchTab();
+        step.toDoSearch(searchRequest);
+        Assert.assertTrue(step.presentInList(searchResult));
 
     }
 

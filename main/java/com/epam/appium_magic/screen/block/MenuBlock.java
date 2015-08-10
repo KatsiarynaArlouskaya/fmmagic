@@ -10,8 +10,26 @@ import io.appium.java_client.MobileElement;
  */
 @AndroidBlock(@AndroidFindBy(id = "android:id/tabs"))
 public class MenuBlock extends BlockElement {
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Events']")
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").selected(true)")
+    private MobileElement activeTab;
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.widget.TextView\").text(\"Events\")")
     private MobileElement tabEvents;
+   @AndroidFindBy(name = "Search")
+   private MobileElement tabSearch;
+
+/*    @AndroidFindBy(using = )
+    private MobileElement tabSearch;*/
+
+    public void clickEventTab(){
+        tabEvents.click();
+    }
+
+    public void clickSearchTab(){
+        tabSearch.click();
+    }
 
 
+    public String getNameActiveTab() {
+        return activeTab.getText();
+    }
 }
