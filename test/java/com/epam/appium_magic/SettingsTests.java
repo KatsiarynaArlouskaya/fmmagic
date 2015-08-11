@@ -35,6 +35,8 @@ public class SettingsTests
         step.goToSettings();
         step.setScrobblePercentage(scrobblePercentage);
         Assert.assertEquals(step.getScrobbleParcentage(), scrobblePercentage);
+        step.goBack();
+        step.goBack();
     }
 
 

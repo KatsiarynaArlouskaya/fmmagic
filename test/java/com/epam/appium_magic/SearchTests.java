@@ -29,12 +29,10 @@ public class SearchTests
     @Test
     public void searchTest()
     {
-        String searchRequest="System of a Down";
-        String searchResult="Forest";
         step.clickSearchTab();
-        step.toDoSearch(searchRequest);
-        Assert.assertTrue(step.presentInList(searchResult));
-        step.clickOnSearchResult(searchResult);
+        step.toDoSearch(artist);
+        Assert.assertTrue(step.presentInList(nameSong));
+        step.clickOnSearchResult(nameSong);
 
     }
 

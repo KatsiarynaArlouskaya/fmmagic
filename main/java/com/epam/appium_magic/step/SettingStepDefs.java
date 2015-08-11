@@ -36,8 +36,12 @@ public class SettingStepDefs
 
     }
 
-    public int getScrobbleParcentage() {
+    public String getScrobbleParcentage() {
         settingsPage.clickOnScrobblePercentage();
         return settingsPage.getScrobbleParcentage();
+    }
+
+    public void goBack() {
+        driver.navigate().back();
     }
 }

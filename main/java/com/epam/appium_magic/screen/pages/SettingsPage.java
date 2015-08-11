@@ -4,6 +4,7 @@ import com.epam.appium_magic.harness.pageobject.PageObject;
 import com.epam.qatools.mobileelements.annotations.AndroidFindBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import org.openqa.selenium.By;
 
 
@@ -41,13 +42,19 @@ public class SettingsPage extends PageObject {
         waitForElement(alertLocator);
     }
     public void setScrobblePercentage(String scrobblePercentage) {
-   //     seekBar.sendKeys((Integer.parseInt(scrobblePercentage)-1)+"");
-        seekBar.sendKeys("3");
+        int stepsSeekBar = 100;
+        int valueForLeftX = 2;
+        int leftX = seekBar.getLocation().getX();
+        int middleX = leftX+(seekBar.getSize().getWidth()/2);
+        int middleY = seekBar.getLocation().getY()+(seekBar.getSize().getHeight()/2);
+        int targetX = leftX+((Integer.parseInt(scrobblePercentage)-valueForLeftX)*seekBar.getSize().getWidth()/(stepsSeekBar-2*valueForLeftX));
+        swipe(middleX, middleY, targetX, middleY, 500);
+
         btnOk.click();
     }
 
-    public int getScrobbleParcentage() {
+    public String getScrobbleParcentage() {
         System.out.println("value=" + Integer.parseInt(textScroblePercentageValue.getText()));
-        return Integer.parseInt(textScroblePercentageValue.getText());
+        return textScroblePercentageValue.getText();
     }
 }

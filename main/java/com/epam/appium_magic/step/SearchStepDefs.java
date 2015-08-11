@@ -30,6 +30,6 @@ public class SearchStepDefs
     }
 
     public void clickOnSearchResult(String searchResult) {
-        searchPage.clickOnSearcResult(searchResult);
+        searchPage.clickOnSearchResult(searchResult);
     }
 }

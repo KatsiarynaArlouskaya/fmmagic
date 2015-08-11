@@ -9,6 +9,8 @@ import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class SearchPage extends PageObject {
     By searchResultsPresentLocator = By.id("fm.last.android:id/row_icon");
     By webView = By.id("fm.last.android:id/webview");
 
+
     public void clickSearchTab() {
         menu.clickSearchTab();
     }
@@ -50,12 +53,16 @@ public class SearchPage extends PageObject {
     }
 
     public boolean presentInList(String searchResult) {
-       By searchLocator = new MobileBy.ByAndroidUIAutomator("textContains(\""+searchResult+"\")");
-       List<WebElement> elements = listOfResults.findElements(searchLocator);
-       return !elements.isEmpty() && elements.get(0).isDisplayed();
+      By searchLocator = new MobileBy.ByAndroidUIAutomator("textContains(\""+searchResult+"\")");
+      List<WebElement> elements = listOfResults.findElements(searchLocator);
+        if (elements.size()==0) {
+            new WebDriverWait(driver(), EXTENDED_ELEMENT_WAIT_SEC).until(ExpectedConditions.visibilityOf(driver().scrollTo(searchResult)));
+    }
+      elements = listOfResults.findElements(searchLocator);
+       return (!elements.isEmpty() && elements.get(0).isDisplayed());
     }
 
-    public void clickOnSearcResult(String searchResult) {
+    public void clickOnSearchResult(String searchResult) {
         By searchLocator = new MobileBy.ByAndroidUIAutomator("textContains(\""+searchResult+"\")");
         listOfResults.findElement(searchLocator).click();
         waitForElement(webView);
