@@ -29,7 +29,11 @@ public class LoginStepDefs
 
 
     public void skipAlertClickNo() {
-        alert.clickNo();
+     //   while (alert.isAlertPresent()){
+            alert.clickNo();
+            alert.clickNo();
+    //    }
+
     }
 
     public boolean textPresent(String text) {
@@ -41,7 +45,5 @@ public class LoginStepDefs
         return loginPage.getNameActiveTab();
     }
 
-    public void clickRadioTab() {
-        loginPage.clickRadioTab();
-    }
+
 }

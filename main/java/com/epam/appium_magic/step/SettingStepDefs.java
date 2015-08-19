@@ -24,7 +24,12 @@ public class SettingStepDefs
 
 
     public void goToSettings() {
-        if (System.getProperty("platform").startsWith("android")){
+//        if (System.getProperty("platform").startsWith("android")){
+//            ((AndroidDriver) driver).sendKeyEvent(AndroidKeyCode.MENU);
+//            settingsPage.clickOnSettings();
+//        }
+
+        if (driver instanceof  AndroidDriver){
             ((AndroidDriver) driver).sendKeyEvent(AndroidKeyCode.MENU);
             settingsPage.clickOnSettings();
         }

@@ -28,19 +28,15 @@ public class EventTests
     @Test
     public void addEvent()
     {
+        int containEvents = 1;
         step.clickEventTab();
         step.clickFirstEvent();
         step.changeToAttending();
         step.back();
         step.clickEventTab();
         step.clickMyEvents();
-        Assert.assertEquals(step.countOfEvents(), 1);
+        Assert.assertEquals(step.countOfEvents(), containEvents);
 
     }
 
-
-    @AfterClass
-    public void teardown(){
-       // AppiumDriverProvider.teardown();
-    }
 }

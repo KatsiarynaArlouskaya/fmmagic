@@ -41,7 +41,5 @@ public class LoginPage extends PageObject {
         return menu.getNameActiveTab();
     }
 
-    public void clickRadioTab() {
-        menu.clickRadioTab();
-    }
+
 }

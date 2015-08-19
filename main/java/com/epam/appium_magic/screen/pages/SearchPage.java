@@ -57,9 +57,9 @@ public class SearchPage extends PageObject {
       List<WebElement> elements = listOfResults.findElements(searchLocator);
         if (elements.size()==0) {
             new WebDriverWait(driver(), EXTENDED_ELEMENT_WAIT_SEC).until(ExpectedConditions.visibilityOf(driver().scrollTo(searchResult)));
+            elements = listOfResults.findElements(searchLocator);
     }
-      elements = listOfResults.findElements(searchLocator);
-       return (!elements.isEmpty() && elements.get(0).isDisplayed());
+      return (!elements.isEmpty() && elements.get(0).isDisplayed());
     }
 
     public void clickOnSearchResult(String searchResult) {

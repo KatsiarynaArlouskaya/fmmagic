@@ -34,14 +34,12 @@ public class LoginTests
         String activeTab = "Profile";
         step.login(login, password);
         step.skipAlertClickNo();
-        step.skipAlertClickNo();
         Assert.assertEquals(step.getNameActiveTab(), activeTab);
         Assert.assertTrue(step.textPresent(username));
-    //    step.clickRadioTab();
     }
 
     @AfterSuite
     public void tearDown(){
-//      AppiumDriverProvider.teardown();
+      AppiumDriverProvider.teardown();
     }
 }

@@ -20,7 +20,8 @@ public class GenericAlert extends PageObject
 
     @AndroidFindBy(uiAutomator = "new UiSelector().text(\"No\")")
     MobileElement btnNo;
-    By alertLocator = By.id("android:id/alertTitle");
+    String alertLocatorByID = "android:id/alertTitle";
+
 
     public GenericAlert(AppiumDriver driver)
     {
@@ -28,7 +29,10 @@ public class GenericAlert extends PageObject
     }
 
     public void clickNo(){
-        waitForElement(alertLocator, EXTENDED_ELEMENT_WAIT_SEC);
         btnNo.click();
+    }
+
+    public boolean isAlertPresent(){
+        return isElementPresent(By.id(alertLocatorByID));
     }
 }
