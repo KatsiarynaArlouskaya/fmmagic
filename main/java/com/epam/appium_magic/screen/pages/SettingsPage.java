@@ -5,7 +5,11 @@ import com.epam.qatools.mobileelements.element.SeekBar;
 import com.epam.qatools.mobileelements.annotations.AndroidFindBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import org.openqa.selenium.By;
+import io.appium.java_client.TouchAction;
+import org.openqa.selenium.*;
+import org.openqa.selenium.internal.WrapsDriver;
+
+import java.awt.*;
 
 
 /**
@@ -43,7 +47,30 @@ public class SettingsPage extends PageObject {
     }
     public void setScrobblePercentage(String scrobblePercentage) {
 
-        seekBar.setValue(scrobblePercentage);
+       // seekBar.setValue(scrobblePercentage);
+        //        WebElement element = this.getWrappedElement();
+        //WebDriver driver = ((WrapsDriver) element).getWrappedDriver();
+        int scrobblePercentageTo = Integer.parseInt(scrobblePercentage);
+        int stepOnePersent = seekBar.getSize().width / 100;
+        org.openqa.selenium.Point center = seekBar.getCenter();
+        int x = center.x;
+        int y = center.y;
+
+        TouchAction action = new TouchAction(driver());
+
+        driver().performTouchAction(action.press(x, y));
+
+        if (scrobblePercentage.equals("0"))
+            driver().performTouchAction(action.moveTo(x -= stepOnePersent * 50, y).release());
+        else {
+            do {
+                int step = stepOnePersent * (Integer.parseInt(textScroblePercentageValue.getText()) - scrobblePercentageTo) / 2;
+                action.moveTo(x -= step, y);
+                driver().performTouchAction(action);
+            } while (!textScroblePercentageValue.getText().equals(scrobblePercentage));
+            driver().performTouchAction(action.moveTo(x, y).release());
+        }
+
         btnOk.click();
     }
 
